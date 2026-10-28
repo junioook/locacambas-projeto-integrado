@@ -3,11 +3,11 @@
 {% block classe_main %}tela-login{% endblock %}
 {% block conteudo %}
 <form method="post" class="cartao login">
-  <div class="logo-grande">▣</div>
-  <h1>Controle de Caçambas</h1>
-  <p class="sub">Acesso restrito aos atendentes</p>
-  <label>Usuário <input name="login" autofocus required></label>
-  <label>Senha <input name="senha" type="password" required></label>
+  <img class="logo-grande" src="{{ url_for('static', filename='logo.png') }}" alt="Locaçambas">
+  <div class="abas"><span>Login</span></div>
+  <input name="login" placeholder="Usuário" autofocus required>
+  <input name="senha" type="password" placeholder="Senha" required style="margin-top:14px">
   <button type="submit">Entrar</button>
+  <p class="rodape">Acesso restrito aos atendentes</p>
 </form>
 {% endblock %}

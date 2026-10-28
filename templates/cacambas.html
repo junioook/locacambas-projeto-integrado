@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block titulo %}Caçambas em campo{% endblock %}
 {% block conteudo %}
-<h1>Caçambas em campo</h1>
+<h1 class="titulo"><a href="{{ url_for('inicio') }}">{{ icones.voltar|safe }}</a>Caçambas em campo</h1>
 <div class="indicadores">
   {% set disp = frota|selectattr('status','equalto','DISPONIVEL')|list|length %}
-  <div class="ind"><b>{{ frota|length }}</b><span>na frota</span></div>
-  <div class="ind campo"><b>{{ em_campo|length }}</b><span>em campo</span></div>
-  <div class="ind livre"><b>{{ disp }}</b><span>disponíveis</span></div>
+  <div class="ind"><i class="c-roxo">{{ icones.frota|safe }}</i><div><b>{{ frota|length }}</b><span>na frota</span></div></div>
+  <div class="ind"><i class="c-laranja">{{ icones.campo|safe }}</i><div><b>{{ em_campo|length }}</b><span>em campo</span></div></div>
+  <div class="ind"><i class="c-agua">{{ icones.livre|safe }}</i><div><b>{{ disp }}</b><span>disponíveis</span></div></div>
 </div>
 
 <section class="cartao">
@@ -15,7 +15,7 @@
     <tbody>
     {% for l in em_campo %}
       <tr class="{{ 'atrasada' if l.data_prev_ret < hoje }}">
-        <td><b>{{ l.numero }}</b> <small>{{ '%g'|format(l.capacidade) }} m³</small></td>
+        <td class="nw"><b>{{ l.numero }}</b> <small>{{ '%g'|format(l.capacidade) }} m³</small></td>
         <td>{{ l.cliente }}</td><td class="nw">{{ l.telefone|fone }}</td><td>{{ l.endereco_obra }}</td>
         <td>{{ l.data_entrega|data_br }}</td>
         <td>{{ l.data_prev_ret|data_br }}{% if l.data_prev_ret < hoje %} <span class="selo">atrasada</span>{% endif %}</td>

@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block titulo %}Clientes{% endblock %}
 {% block conteudo %}
-<h1>Clientes</h1>
+<h1 class="titulo"><a href="{{ url_for('inicio') }}">{{ icones.voltar|safe }}</a>Clientes</h1>
 <div class="grade">
   <form method="post" class="cartao" novalidate>
-    <h2>Cadastrar cliente</h2>
+    <h2>Informações do Cliente</h2>
     <label>Nome / Razão social *<input name="nome" value="{{ form.nome or '' }}"></label>
     <label>CPF / CNPJ<input name="cpf_cnpj" value="{{ form.cpf_cnpj or '' }}" placeholder="somente números"></label>
     <label>Telefone *<input name="telefone" value="{{ form.telefone or '' }}" placeholder="(94) 99999-0000"></label>
     <label>Endereço<input name="endereco" value="{{ form.endereco or '' }}"></label>
-    <button type="submit">Salvar cliente</button>
+    <button type="submit" class="cheio">Salvar cliente</button>
   </form>
 
   <section class="cartao">

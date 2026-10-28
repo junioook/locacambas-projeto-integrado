@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block titulo %}Nova locação{% endblock %}
 {% block conteudo %}
-<h1>Nova locação</h1>
-<form method="post" class="cartao estreito" novalidate>
+<h1 class="titulo"><a href="{{ url_for('inicio') }}">{{ icones.voltar|safe }}</a>Nova locação</h1>
+<form method="post" class="estreito" novalidate>
+<div class="cartao" style="margin-bottom:16px">
+  <h2>Informações da Locação</h2>
   <label>Cliente *
     <select name="cliente_id">
       <option value="">— selecione —</option>
@@ -20,11 +22,15 @@
     </select>
   </label>
   <label>Endereço da obra *<input name="endereco_obra" value="{{ form.endereco_obra or '' }}"></label>
+</div>
+<div class="cartao" style="margin-bottom:18px">
+  <h2>Detalhes do Serviço</h2>
   <div class="linha">
-    <label>Data de entrega *<input type="date" name="data_entrega" value="{{ form.data_entrega }}"></label>
-    <label>Previsão de retirada *<input type="date" name="data_prev_ret" value="{{ form.data_prev_ret }}"></label>
+    <label>Data de entrega *<input name="data_entrega" placeholder="dd/mm/aaaa" value="{{ form.data_entrega }}"></label>
+    <label>Previsão de retirada *<input name="data_prev_ret" placeholder="dd/mm/aaaa" value="{{ form.data_prev_ret }}"></label>
     <label>Valor (R$) *<input name="valor" value="{{ form.valor or '' }}" placeholder="250,00"></label>
   </div>
-  <button type="submit">Registrar locação</button>
+</div>
+  <button type="submit" class="cheio">Registrar locação</button>
 </form>
 {% endblock %}

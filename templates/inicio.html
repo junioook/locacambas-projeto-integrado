@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block titulo %}Início{% endblock %}
+{% block conteudo %}
+<div class="ola-grande"><span>Olá,</span><h1>{{ session.usuario_nome }}</h1></div>
+
+<div class="indicadores">
+  <div class="ind"><i class="c-roxo">{{ icones.frota|safe }}</i><div><b>{{ total }}</b><span>caçambas na frota</span></div></div>
+  <div class="ind"><i class="c-laranja">{{ icones.campo|safe }}</i><div><b>{{ em_campo }}</b><span>em campo{% if atrasadas %} · {{ atrasadas }} atrasada{{ 's' if atrasadas > 1 }}{% endif %}</span></div></div>
+  <div class="ind"><i class="c-agua">{{ icones.livre|safe }}</i><div><b>{{ disponiveis }}</b><span>disponíveis</span></div></div>
+</div>
+
+<nav class="menu">
+  <a href="{{ url_for('nova_locacao') }}"><i class="c-roxo">{{ icones.locacao|safe }}</i>
+    <div><b>Nova locação</b><small>Enviar caçamba para uma obra</small></div><span class="seta">›</span></a>
+  <a href="{{ url_for('clientes') }}"><i class="c-agua">{{ icones.clientes|safe }}</i>
+    <div><b>Clientes</b><small>Cadastrar e consultar clientes</small></div><span class="seta">›</span></a>
+  <a href="{{ url_for('cacambas') }}"><i class="c-agua-esc">{{ icones.campo|safe }}</i>
+    <div><b>Caçambas em campo</b><small>Ver locações ativas e registrar retirada</small></div><span class="seta">›</span></a>
+</nav>
+{% endblock %}
