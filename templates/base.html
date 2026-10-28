@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Caçambas{% endblock %} · Controle de Locação</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+{% if session.usuario_id %}
+<header class="topo">
+  <div class="marca"><span class="logo">▣</span> Controle de Caçambas</div>
+  <nav>
+    <a href="{{ url_for('cacambas') }}" class="{{ 'ativo' if request.endpoint == 'cacambas' }}">Caçambas em campo</a>
+    <a href="{{ url_for('nova_locacao') }}" class="{{ 'ativo' if request.endpoint == 'nova_locacao' }}">Nova locação</a>
+    <a href="{{ url_for('clientes') }}" class="{{ 'ativo' if request.endpoint == 'clientes' }}">Clientes</a>
+  </nav>
+  <div class="usuario">{{ session.usuario_nome }} · <a href="{{ url_for('logout') }}">Sair</a></div>
+</header>
+{% endif %}
+<main class="{% block classe_main %}conteudo{% endblock %}">
+  {% with msgs = get_flashed_messages(with_categories=true) %}
+    {% for cat, msg in msgs %}<div class="alerta {{ cat }}">{{ msg }}</div>{% endfor %}
+  {% endwith %}
+  {% block conteudo %}{% endblock %}
+</main>
+</body>
+</html>

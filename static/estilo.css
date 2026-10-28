@@ -1,0 +1,41 @@
+:root{--azul:#1f4e79;--azul2:#2e75b6;--fundo:#f3f5f8;--borda:#d7dde5;--texto:#1d2733;--sub:#5b6875;--ok:#1e7b46;--erro:#b3261e;--laranja:#d9822b}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.45 "Segoe UI",Arial,sans-serif;background:var(--fundo);color:var(--texto)}
+.topo{display:flex;align-items:center;gap:28px;background:var(--azul);color:#fff;padding:0 24px;height:56px}
+.marca{font-weight:700;font-size:17px;white-space:nowrap}.logo{color:#ffc04d}
+.topo nav{display:flex;gap:4px;flex:1}
+.topo nav a{color:#d6e4f2;text-decoration:none;padding:8px 14px;border-radius:6px}
+.topo nav a.ativo,.topo nav a:hover{background:rgba(255,255,255,.15);color:#fff}
+.usuario{font-size:13px;color:#d6e4f2}.usuario a{color:#fff}
+.conteudo{max-width:1180px;margin:0 auto;padding:24px}
+h1{margin:0 0 18px;font-size:24px}h2{margin:0 0 14px;font-size:17px}
+.cartao{background:#fff;border:1px solid var(--borda);border-radius:10px;padding:20px}
+.grade{display:grid;grid-template-columns:340px 1fr;gap:20px;align-items:start}
+.estreito{max-width:720px}
+label{display:block;font-size:13px;font-weight:600;color:var(--sub);margin-bottom:12px}
+input,select{display:block;width:100%;margin-top:4px;padding:9px 10px;border:1px solid var(--borda);border-radius:6px;font:inherit;color:var(--texto);background:#fff}
+input:focus,select:focus{outline:2px solid var(--azul2);border-color:transparent}
+.linha{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+button{background:var(--azul2);color:#fff;border:0;border-radius:6px;padding:10px 18px;font:inherit;font-weight:600;cursor:pointer}
+button:hover{background:var(--azul)}
+button.sec{background:#fff;color:var(--azul2);border:1px solid var(--azul2);padding:6px 10px;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--sub);border-bottom:2px solid var(--borda);padding:8px}
+td{padding:9px 8px;border-bottom:1px solid #eef1f4}
+td.vazio{text-align:center;color:var(--sub);padding:24px}
+tr.atrasada td{background:#fff6ec}
+.selo{background:var(--laranja);color:#fff;font-size:11px;padding:1px 6px;border-radius:8px}
+small{color:var(--sub)}.nw{white-space:nowrap}
+.alerta{padding:11px 14px;border-radius:6px;margin-bottom:14px;font-weight:500}
+.alerta.ok{background:#e5f4ea;color:var(--ok);border:1px solid #b9dfc6}
+.alerta.erro{background:#fdecea;color:var(--erro);border:1px solid #f3c1bc}
+.cab-lista{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.busca{display:flex;gap:6px}.busca input{margin:0;width:200px}.busca button{padding:8px 12px}
+.indicadores{display:flex;gap:14px;margin-bottom:18px}
+.ind{background:#fff;border:1px solid var(--borda);border-left:5px solid var(--azul2);border-radius:8px;padding:12px 18px;min-width:150px}
+.ind b{font-size:26px;display:block}.ind span{color:var(--sub);font-size:13px}
+.ind.campo{border-left-color:var(--laranja)}.ind.livre{border-left-color:var(--ok)}
+.tela-login{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
+.login{width:360px;text-align:center}.login label{text-align:left}.login button{width:100%;margin-top:6px}
+.logo-grande{font-size:42px;color:var(--azul2);line-height:1}.sub{color:var(--sub);margin-top:-8px}
+@media (max-width:760px){.grade,.linha{grid-template-columns:1fr}.topo{flex-wrap:wrap;height:auto;padding:10px 16px}}

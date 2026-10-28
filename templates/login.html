@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block titulo %}Login{% endblock %}
+{% block classe_main %}tela-login{% endblock %}
+{% block conteudo %}
+<form method="post" class="cartao login">
+  <div class="logo-grande">▣</div>
+  <h1>Controle de Caçambas</h1>
+  <p class="sub">Acesso restrito aos atendentes</p>
+  <label>Usuário <input name="login" autofocus required></label>
+  <label>Senha <input name="senha" type="password" required></label>
+  <button type="submit">Entrar</button>
+</form>
+{% endblock %}
