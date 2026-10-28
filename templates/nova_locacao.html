@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block titulo %}Nova locação{% endblock %}
+{% block conteudo %}
+<h1>Nova locação</h1>
+<form method="post" class="cartao estreito" novalidate>
+  <label>Cliente *
+    <select name="cliente_id">
+      <option value="">— selecione —</option>
+      {% for c in clientes %}<option value="{{ c.id }}" {{ 'selected' if form.cliente_id == c.id|string }}>{{ c.nome }}</option>{% endfor %}
+    </select>
+  </label>
+  <label>Caçamba *
+    <select name="cacamba_id">
+      <option value="">— selecione —</option>
+      {% for k in cacambas %}
+        <option value="{{ k.id }}" {{ 'selected' if form.cacamba_id == k.id|string }}>
+          {{ k.numero }} · {{ '%g'|format(k.capacidade) }} m³ · {{ 'Disponível' if k.status == 'DISPONIVEL' else 'Locada' if k.status == 'LOCADA' else 'Manutenção' }}
+        </option>
+      {% endfor %}
+    </select>
+  </label>
+  <label>Endereço da obra *<input name="endereco_obra" value="{{ form.endereco_obra or '' }}"></label>
+  <div class="linha">
+    <label>Data de entrega *<input type="date" name="data_entrega" value="{{ form.data_entrega }}"></label>
+    <label>Previsão de retirada *<input type="date" name="data_prev_ret" value="{{ form.data_prev_ret }}"></label>
+    <label>Valor (R$) *<input name="valor" value="{{ form.valor or '' }}" placeholder="250,00"></label>
+  </div>
+  <button type="submit">Registrar locação</button>
+</form>
+{% endblock %}
