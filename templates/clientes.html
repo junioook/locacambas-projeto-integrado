@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block titulo %}Clientes{% endblock %}
+{% block conteudo %}
+<h1>Clientes</h1>
+<div class="grade">
+  <form method="post" class="cartao" novalidate>
+    <h2>Cadastrar cliente</h2>
+    <label>Nome / Razão social *<input name="nome" value="{{ form.nome or '' }}"></label>
+    <label>CPF / CNPJ<input name="cpf_cnpj" value="{{ form.cpf_cnpj or '' }}" placeholder="somente números"></label>
+    <label>Telefone *<input name="telefone" value="{{ form.telefone or '' }}" placeholder="(94) 99999-0000"></label>
+    <label>Endereço<input name="endereco" value="{{ form.endereco or '' }}"></label>
+    <button type="submit">Salvar cliente</button>
+  </form>
+
+  <section class="cartao">
+    <div class="cab-lista">
+      <h2>Clientes cadastrados ({{ clientes|length }})</h2>
+      <form method="get" class="busca"><input name="q" value="{{ busca }}" placeholder="Buscar por nome"><button>Buscar</button></form>
+    </div>
+    <table>
+      <thead><tr><th>Nome</th><th>CPF/CNPJ</th><th>Telefone</th><th>Endereço</th></tr></thead>
+      <tbody>
+      {% for c in clientes %}
+        <tr><td>{{ c.nome }}</td><td>{{ c.cpf_cnpj or '—' }}</td><td class="nw">{{ c.telefone|fone }}</td><td>{{ c.endereco or '—' }}</td></tr>
+      {% else %}
+        <tr><td colspan="4" class="vazio">Nenhum cliente cadastrado.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
+{% endblock %}
