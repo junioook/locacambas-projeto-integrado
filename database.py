@@ -61,7 +61,7 @@ def inicializar():
         if con.execute("SELECT COUNT(*) FROM usuario").fetchone()[0] == 0:
             con.execute(
                 "INSERT INTO usuario (nome, login, senha_hash) VALUES (?, ?, ?)",
-                ("Atendente", "admin", generate_password_hash("admin123")),
+                ("Edson Barbosa", "admin", generate_password_hash("admin123")),
             )
         if con.execute("SELECT COUNT(*) FROM cacamba").fetchone()[0] == 0:
             frota = [("C-01", 4), ("C-02", 4), ("C-03", 5), ("C-04", 5), ("C-05", 7)]
